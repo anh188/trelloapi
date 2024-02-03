@@ -26,8 +26,8 @@ const validateBoardData = (req, res, next) => {
 
 router.post('/' , validateBoardData,upload.single('cover'),  boardController.create);
 // router.post('/', boardController.create);
-router.get('/', validateBoardData,boardController.getAll)
-router.put('/:id',validateBoardData, upload.single('cover'), boardController.update)
-router.delete('/:id',validateBoardData ,boardController.delete)
+router.get('/', boardController.getAll)
+router.put('/:id', upload.single('cover'), boardController.update)
+router.delete('/:id',boardController.delete)
 
 module.exports = router;

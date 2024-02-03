@@ -24,9 +24,9 @@ const validateBoardListData = (req,res,next) =>{
 };
 
 // // Định nghĩa API để tạo mới một danh sách trong bảng
-router.post('/:boardId/lists', validateBoardListData, boardListController.create);
-router.put('/:boardId/lists/:listId', validateBoardListData, boardListController.update);
-router.delete('/:boardId/lists/:listId', validateBoardListData, boardListController.delete);
-router.get('/:boardId/lists', validateBoardListData, boardListController.getAll);
+router.post('/lists', validateBoardListData, boardListController.create);
+router.put('/:boardId/lists/:listId', boardListController.update);
+router.delete('/:boardId/lists/:listId', boardListController.delete);
+router.get('/:boardId/lists', boardListController.getAll);
 
 module.exports = router;

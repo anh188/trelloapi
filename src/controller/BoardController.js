@@ -71,7 +71,7 @@ class BoardController{
         //   return true;
         // }
   
-        // return false;
+        return false;
         
         if(result){
           res.status(200).json({'msg':'Deleted'})

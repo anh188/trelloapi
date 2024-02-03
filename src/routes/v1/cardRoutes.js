@@ -30,6 +30,7 @@ const validateCardData = (req, res, next) => {
 
 router.post('/', validateCardData, uploadcard.fields([{ name: 'cover' }, { name: 'attachments' }]), CardController.createCard);
 router.put('/:cardId', validateCardData, uploadcard.fields([{ name: 'cover' }, { name: 'attachments' }]), CardController.updateCard);
-router.delete('/:cardId', validateCardData,CardController.deleteCard)
-router.get('/:listId', validateCardData, CardController.getCard)
+router.delete('/:cardId',CardController.deleteCard)
+router.get('/:listId', CardController.getCard)
+router.get('/:cardId', CardController.getCardById);
 module.exports=router;

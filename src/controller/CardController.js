@@ -62,11 +62,33 @@ class CardController {
   }
 
   static async getCard(req, res, next){
+    // try {
+    //   const { listId } = req.params;
+    //   const cards = await CardService.getCard(listId);
+  
+    //   res.status(200).json({ cards });
+    // } catch (error) {
+    //   next(error);
+    // }
     try {
       const { listId } = req.params;
       const cards = await CardService.getCard(listId);
-  
       res.status(200).json({ cards });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async getCardById(req, res, next) {
+    try {
+      const { cardId } = req.params;
+      const card = await CardService.getCardById(cardId);
+  
+      if (!card) {
+        return res.status(404).json({ message: 'Card not found' });
+      }
+  
+      res.status(200).json({ card });  // Use "card" instead of { cards }
     } catch (error) {
       next(error);
     }

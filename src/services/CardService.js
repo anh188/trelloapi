@@ -1,3 +1,4 @@
+const { date } = require('joi');
 const Card = require('../models/Card')
 class CardService {
   static async createCard(data) {
@@ -35,7 +36,16 @@ class CardService {
 
   static async getCard(listId){
     try {
-      const cards = await Card.find({ listId });
+      const cards = await Card.find({ listId }).select('title');
+      return cards;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async getCardbyId(cardId) {
+    try {
+      const cards = await Card.findById(cardId);
       return cards;
     } catch (error) {
       throw error;

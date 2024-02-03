@@ -16,7 +16,7 @@ const BoardListService = require('../services/BoardListService');
     create = async (req, res, next)=>{
       try{
         const {title, position}= req.body;
-        const boardId = req.params.boardId;
+        const boardId = req.body.boardId;
         let data = {
           title,position,boardId
         }
