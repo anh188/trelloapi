@@ -4,10 +4,10 @@ class UserController{
 
     create = async(req,res,next) =>{
         try {
-            const {username, email, phone, age} = req.body;
+            const {username,password, email, phone, age} = req.body;
             //Goi den service
             let data ={
-                username, email, phone, age
+                username,password, email, phone, age
             }
             const user = await UserService.create(data)
             
@@ -33,12 +33,12 @@ class UserController{
 
     update= async (req, res, next) =>{
         try {
-            const {username, email, phone, age} = req.body;
+            const {username,password, email, phone, age} = req.body;
             const{id} = req.params;
             
             //Goi den service
             let data ={
-                username, email, phone, age
+                username,password, email, phone, age
             }
             const result = await UserService.update(id,data)
             

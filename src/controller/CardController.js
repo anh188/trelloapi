@@ -62,14 +62,6 @@ class CardController {
   }
 
   static async getCard(req, res, next){
-    // try {
-    //   const { listId } = req.params;
-    //   const cards = await CardService.getCard(listId);
-  
-    //   res.status(200).json({ cards });
-    // } catch (error) {
-    //   next(error);
-    // }
     try {
       const { listId } = req.params;
       const cards = await CardService.getCard(listId);
@@ -81,8 +73,8 @@ class CardController {
 
   static async getCardById(req, res, next) {
     try {
-      const { cardId } = req.params;
-      const card = await CardService.getCardById(cardId);
+      const { idCard } = req.params;
+      const card = await CardService.getCardId(idCard);
   
       if (!card) {
         return res.status(404).json({ message: 'Card not found' });

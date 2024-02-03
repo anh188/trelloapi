@@ -24,7 +24,7 @@ const validateBoardData = (req, res, next) => {
   next();
 };
 
-router.post('/' , validateBoardData,upload.single('cover'),  boardController.create);
+router.post('/' , validateBoardData,verifyToken,upload.single('cover'),  boardController.create);
 // router.post('/', boardController.create);
 router.get('/', boardController.getAll)
 router.put('/:id', upload.single('cover'), boardController.update)

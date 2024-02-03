@@ -43,10 +43,11 @@ class CardService {
     }
   }
 
-  static async getCardbyId(cardId) {
+  getCardId = async (idCard)=> {
     try {
-      const cards = await Card.findById(cardId);
-      return cards;
+      const card = await Card.findOne({_id: idCard});
+      console.log(card);
+      return card;
     } catch (error) {
       throw error;
     }

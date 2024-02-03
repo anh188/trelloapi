@@ -8,6 +8,7 @@ const userValidationSchema = Joi.object({
   username: Joi.string().alphanum().required().messages({
     'any.required': `"username" không được bỏ trống !`
   }),
+  password: Joi.string().required(),
   email: Joi.string().email().required(),
   age: Joi.number().min(18).required(),
   phone: Joi.string().min(10).max(10).required(),
@@ -30,7 +31,7 @@ const validateUserData = (req, res, next) => {
 
 router.post('/', validateUserData, verifyToken,  userController.create);
 router.get('/', userController.getAll)
-router.put('/:id', userController.update)
+router.put('/:id',verifyToken ,userController.update)
 router.delete('/:id', userController.delete)
 
 module.exports = router;

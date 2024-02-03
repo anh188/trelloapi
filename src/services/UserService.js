@@ -2,6 +2,14 @@ const User = require("../models/User");
 
 class UserService{
 
+    checkUserData = async(username, password)=>{
+      try {
+        const user = await User.findOne({ username, password });
+        return user;
+      } catch (error) {
+        throw new Error('Tài khoản không tồn tại. Vui lòng đăng kí tài khoản !')
+    }
+  }
     create = async (dataUser) =>{
         try {
             //Goi den tang model
