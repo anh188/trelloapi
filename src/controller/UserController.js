@@ -11,9 +11,16 @@ class UserController{
             }
             const user = await UserService.create(data)
             
-            res.status(200).json({
-                user
-            })
+            const responseData = {
+              username: user.username,
+              email: user.email,
+              phone: user.phone,
+              age: user.age
+          };
+  
+          res.status(200).json({
+              user: responseData
+          });
         } catch (error) {
            throw error;
         }
